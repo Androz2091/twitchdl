@@ -18,7 +18,7 @@ const fetchVideoData = async (videoID, authToken) => {
 	const resVideoData = await fetch('https://gql.twitch.tv/gql', {
 		method: 'POST',
 		headers: {
-			'Authorization':`OAuth ${authToken}`,
+			'Authorization': authToken && `OAuth ${authToken}`,
 			'Client-Id': clientID
 		},
 		body: JSON.stringify({
@@ -44,7 +44,7 @@ const fetchVideoData = async (videoID, authToken) => {
 	const resVideoMetaData = await fetch('https://gql.twitch.tv/gql', {
 		method: 'POST',
 		headers: {
-			'Authorization':`OAuth ${authToken}`,
+			'Authorization': authToken && `OAuth ${authToken}`,
 			'Client-Id': clientID
 		},
 		body: JSON.stringify({
