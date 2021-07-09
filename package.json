@@ -1,0 +1,20 @@
+{
+  "name": "twitchdl",
+  "version": "0.1.0",
+  "description": "Download videos from Twitch",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Androz2091 <androz2091@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Androz2091/twitchdl"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.1",
+    "ora": "^5.4.1",
+    "yargs": "^17.0.1"
+  }
+}
