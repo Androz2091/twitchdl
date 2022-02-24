@@ -66,15 +66,19 @@ const fetchVideoData = async (videoID, authToken) => {
 
 	return {
 		videoIndexURL: getIndexURL(videoURL),
-		videoName: metadata.data.video.title
+		videoName: metadata.data.video.title.split(' ').join('_').replace(/!/g, '')
 	};
 };
 
 const ffmpegDownload = (indexURL, output) => {
-	const spinner = ora(`Downloading ${output}.mp4`).start();
-	exec(`ffmpeg -i "${indexURL}" -c copy -bsf:a aac_adtstoasc "${output}.mp4"`, () => {
-		spinner.succeed(`Downloaded ${output}.mp4`);
-	});
+	if (argv.dry) {
+		console.log(`ffmpeg -i "${indexURL}" -c copy -bsf:a aac_adtstoasc "${output}.mp4"`)
+	} else {
+		const spinner = ora(`Downloading ${output}.mp4`).start();
+		exec(`ffmpeg -i "${indexURL}" -c copy -bsf:a aac_adtstoasc "${output}.mp4"`, () => {
+			spinner.succeed(`Downloaded ${output}.mp4`);
+		});
+	}
 };
 
 const videoID = argv['_'][0];
