@@ -10,7 +10,7 @@ const sha256HashMetadata = '226edb3e692509f727fd56821f5653c05740242c82b0388883e0
 
 const argv = yargs(hideBin(process.argv)).argv
 
-const twitchVideoRegex = /^https:\/\/\w+.cloudfront.net\/[a-z0-9]+_([a-z0-9]+)_[0-9]+_[0-9]+/;
+const twitchVideoRegex = /^https:\/\/\w+.cloudfront.net\/[a-z0-9]+_([_a-z0-9]+)_[0-9]+_[0-9]+/;
 const getChannelLogin = (videoURL) => videoURL.match(twitchVideoRegex)[1];
 const getIndexURL = (videoURL) => videoURL.match(twitchVideoRegex)[0] + '/chunked/index-dvr.m3u8';
 
